@@ -14,8 +14,6 @@ import colorama
 colorama.init()
 from colorama import Fore, Back, Style
 
-from utils import *
-
 
 #   +--------------------------------------------------+
 #   |                    UTILITIES                     |
@@ -342,9 +340,8 @@ def generate_tests(mods):
                         ]
                         existing_items = list(filter(None, existing_items))
                         if not exists_in_cls:
-                            exists_in_cls = [
-                                obj
-                            ]  # the class exists, so just put an object here so it's not empty
+                            # the class exists, so just put an object here so it's not empty
+                            exists_in_cls = [obj]
                         body = format_class(obj, exists=exists_in_cls)
                     else:
                         body = format_class(obj, exists=None)
@@ -355,18 +352,17 @@ if __name__ == "__main__":
     if len(sys.argv) != 3:
         print(
             Fore.WHITE
-            + Style.BOLD
-            + "TestGen - Generate unit tests for a python project"
+            + Style.BRIGHT
+            + "\nTestGen: Generate unit tests for a python project\n"
             + Style.RESET_ALL
         )
         print(
             Fore.WHITE
-            + Style.BOLD
-            + "./testgen"
+            + "  >>> ./testgen "
             + Fore.BLUE
-            + "<module>"
+            + "<module> "
             + Fore.RED
-            + "<output>"
+            + "<output> "
         )
     else:
         mod = sys.argv[-2]
